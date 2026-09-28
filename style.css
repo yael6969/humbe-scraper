@@ -1,0 +1,445 @@
+/* ─── HUMBE SCRAPER · style.css ──────────────────────────────────────────────
+   Palette  : #f0f0ec (base) · #656466 (accent/text)
+   Font     : Inter (system fallback stack)
+   Style    : Minimalist soft, mobile-first
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+/* ── Reset & base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --base      : #f0f0ec;
+  --mid       : #d8d8d4;
+  --accent    : #656466;
+  --accent-dk : #3e3d3f;
+  --text      : #3e3d3f;
+  --text-soft : #8a888a;
+  --white     : #fafaf8;
+  --shadow    : rgba(101, 100, 102, 0.10);
+  --radius    : 12px;
+  --radius-sm : 8px;
+  --font      : "Inter", system-ui, -apple-system, sans-serif;
+  --transition: 160ms ease;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family  : var(--font);
+  background   : var(--base);
+  color        : var(--text);
+  min-height   : 100dvh;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 48px;
+}
+
+/* ── Layout wrapper ────────────────────────────────────────────────────────── */
+.wrapper {
+  max-width  : 680px;
+  margin     : 0 auto;
+  padding    : 0 16px;
+}
+
+/* ── Banner / Logo ─────────────────────────────────────────────────────────── */
+.banner {
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
+  padding        : 48px 16px 36px;
+  user-select    : none;
+}
+
+.banner-logo {
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+  line-height   : 1;
+  letter-spacing: -0.02em;
+}
+
+.logo-top {
+  font-size  : clamp(2.8rem, 12vw, 5rem);
+  font-weight: 900;
+  color      : var(--accent);
+  letter-spacing: -0.04em;
+}
+
+.logo-bottom {
+  font-size    : clamp(1.3rem, 5.5vw, 2.2rem);
+  font-weight  : 300;
+  color        : var(--accent);
+  letter-spacing: 0.32em;
+  margin-top   : -4px;
+}
+
+.banner-sub {
+  margin-top : 10px;
+  font-size  : 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color      : var(--text-soft);
+  text-transform: uppercase;
+}
+
+/* ── Category tabs ─────────────────────────────────────────────────────────── */
+.tabs {
+  display        : flex;
+  background     : var(--white);
+  border-radius  : var(--radius);
+  padding        : 4px;
+  gap            : 4px;
+  margin-bottom  : 16px;
+  box-shadow     : 0 1px 4px var(--shadow);
+}
+
+.tab-btn {
+  flex        : 1;
+  padding     : 10px 16px;
+  border      : none;
+  border-radius: var(--radius-sm);
+  background  : transparent;
+  color       : var(--accent);
+  font-family : var(--font);
+  font-size   : 0.875rem;
+  font-weight : 500;
+  cursor      : pointer;
+  transition  : background var(--transition), color var(--transition);
+  letter-spacing: 0.02em;
+}
+
+.tab-btn:hover {
+  background: #e6e6e2;
+}
+
+.tab-btn.active {
+  background: var(--accent);
+  color     : var(--base);
+}
+
+/* ── Search bar ────────────────────────────────────────────────────────────── */
+.search-wrap {
+  position     : relative;
+  margin-bottom: 20px;
+  display      : flex;
+  gap          : 8px;
+}
+
+#search-input {
+  flex        : 1;
+  padding     : 13px 18px;
+  border      : 1.5px solid var(--mid);
+  border-radius: var(--radius);
+  background  : var(--white);
+  color       : var(--text);
+  font-family : var(--font);
+  font-size   : 0.9375rem;
+  outline     : none;
+  transition  : border-color var(--transition), box-shadow var(--transition);
+}
+
+#search-input::placeholder { color: var(--text-soft); }
+
+#search-input:focus {
+  border-color: var(--accent);
+  box-shadow  : 0 0 0 3px rgba(101, 100, 102, 0.12);
+}
+
+.btn {
+  padding     : 12px 20px;
+  border      : none;
+  border-radius: var(--radius);
+  font-family : var(--font);
+  font-size   : 0.875rem;
+  font-weight : 600;
+  cursor      : pointer;
+  transition  : background var(--transition), transform 80ms;
+  white-space : nowrap;
+}
+
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--accent);
+  color     : var(--base);
+}
+
+.btn-primary:hover { background: var(--accent-dk); }
+
+.btn-ghost {
+  background: var(--white);
+  color     : var(--accent);
+  border    : 1.5px solid var(--mid);
+}
+
+.btn-ghost:hover { background: #e6e6e2; }
+
+/* ── Status message ────────────────────────────────────────────────────────── */
+#status-msg {
+  display    : none;
+  font-size  : 0.8125rem;
+  color      : var(--text-soft);
+  padding    : 10px 14px;
+  background : var(--white);
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+  border-left : 3px solid var(--mid);
+}
+
+#status-msg[data-loading="true"] {
+  border-left-color: var(--accent);
+  color            : var(--accent);
+}
+
+/* loading dots */
+#status-msg[data-loading="true"]::after {
+  content  : " ···";
+  animation: dots 1.2s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: " ·"; }
+  40%      { content: " ··"; }
+  60%      { content: " ···"; }
+  80%, 100%{ content: ""; }
+}
+
+/* ── Result cards ──────────────────────────────────────────────────────────── */
+#results {
+  display       : flex;
+  flex-direction: column;
+  gap           : 14px;
+}
+
+.card {
+  background   : var(--white);
+  border-radius: var(--radius);
+  padding      : 20px 20px 18px;
+  box-shadow   : 0 1px 6px var(--shadow);
+  position     : relative;
+  overflow     : hidden;
+}
+
+/* subtle left stripe */
+.card::before {
+  content      : "";
+  position     : absolute;
+  top          : 0; left: 0; bottom: 0;
+  width        : 3px;
+  background   : var(--accent);
+  border-radius: 3px 0 0 3px;
+}
+
+.card-badge {
+  display       : inline-block;
+  font-size     : 0.65rem;
+  font-weight   : 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color         : var(--text-soft);
+  margin-bottom : 8px;
+}
+
+.card-grid {
+  display      : flex;
+  flex-direction: column;
+  gap          : 8px;
+}
+
+.card-row {
+  display        : flex;
+  gap            : 10px;
+  font-size      : 0.8125rem;
+  align-items    : flex-start;
+}
+
+.card-label {
+  flex-shrink  : 0;
+  width        : 110px;
+  color        : var(--text-soft);
+  font-weight  : 500;
+  padding-top  : 1px;
+}
+
+.card-value {
+  color     : var(--text);
+  font-weight: 400;
+  word-break: break-all;
+  flex      : 1;
+}
+
+/* ── Card header: foto + nama + kelas berdampingan ─────────────────────────── */
+.card-header-row {
+  display    : flex;
+  align-items: center;
+  gap        : 14px;
+  margin-bottom: 16px;
+}
+
+.card-photo {
+  width        : 60px;
+  height       : 60px;
+  border-radius: 50%;
+  object-fit   : cover;
+  border       : 2px solid var(--mid);
+  flex-shrink  : 0;
+  display      : block;
+}
+
+.card-name-block {
+  display       : flex;
+  flex-direction: column;
+  gap           : 4px;
+  min-width     : 0;
+}
+
+.card-name {
+  font-size    : 1rem;
+  font-weight  : 700;
+  color        : var(--accent-dk);
+  line-height  : 1.2;
+  word-break   : break-word;
+}
+
+.card-kelas {
+  display      : inline-block;
+  font-size    : 0.8rem;
+  font-weight  : 700;
+  color        : var(--base);
+  background   : var(--accent);
+  padding      : 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+  align-self   : flex-start;
+}
+
+/* ── Card raw debug (guru fallback) ────────────────────────────────────────── */
+.card-raw {
+  margin-top : 14px;
+  padding-top: 12px;
+  border-top : 1px solid var(--mid);
+}
+
+.card-raw-pre {
+  font-family: monospace;
+  font-size  : 0.7rem;
+  color      : var(--text-soft);
+  white-space: pre-wrap;
+  word-break : break-all;
+  margin-top : 6px;
+  max-height : 240px;
+  overflow-y : auto;
+}
+
+/* ── Divider between sections ──────────────────────────────────────────────── */
+.section-divider {
+  height       : 1px;
+  background   : var(--mid);
+  margin       : 24px 0;
+  border-radius: 1px;
+}
+
+/* ── Empty state ───────────────────────────────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  padding   : 48px 16px;
+  color     : var(--text-soft);
+}
+
+.empty-state svg {
+  margin-bottom: 12px;
+  opacity: 0.35;
+}
+
+/* ── Responsive tweaks ─────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .banner { padding: 36px 16px 28px; }
+  .search-wrap { flex-wrap: wrap; }
+  #search-input { flex: 1 1 100%; }
+  .btn { flex: 1; justify-content: center; display: flex; align-items: center; }
+  .card-label { width: 96px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+
+/* ── Copy icons ────────────────────────────────────────────────────────────── */
+.card-row {
+  position: relative;
+}
+
+.copy-icon-btn {
+  flex-shrink : 0;
+  margin-left : auto;
+  padding     : 3px;
+  border      : none;
+  background  : transparent;
+  color       : var(--text-soft);
+  cursor      : pointer;
+  border-radius: 4px;
+  display     : flex;
+  align-items : center;
+  transition  : color var(--transition), background var(--transition);
+}
+
+.copy-icon-btn svg {
+  width : 14px;
+  height: 14px;
+}
+
+.copy-icon-btn:hover {
+  color      : var(--accent);
+  background : rgba(101,100,102,0.08);
+}
+
+/* ── Copy whole card button ────────────────────────────────────────────────── */
+.copy-card-btn {
+  position     : absolute;
+  top          : 16px;
+  right        : 16px;
+  padding      : 6px;
+  border       : 1.5px solid var(--mid);
+  border-radius: var(--radius-sm);
+  background   : transparent;
+  color        : var(--text-soft);
+  cursor       : pointer;
+  display      : flex;
+  align-items  : center;
+  transition   : color var(--transition), border-color var(--transition), background var(--transition);
+}
+
+.copy-card-btn svg {
+  width : 15px;
+  height: 15px;
+}
+
+.copy-card-btn:hover {
+  color        : var(--accent);
+  border-color : var(--accent);
+  background   : rgba(101,100,102,0.06);
+}
+
+/* ── Toast notifikasi ──────────────────────────────────────────────────────── */
+.copy-toast {
+  position   : absolute;
+  transform  : translateX(-50%) translateY(4px);
+  background : var(--accent-dk);
+  color      : var(--base);
+  font-size  : 0.7rem;
+  font-weight: 600;
+  padding    : 4px 10px;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity    : 0;
+  transition : opacity 160ms ease, transform 160ms ease;
+  white-space: nowrap;
+  z-index    : 999;
+}
+
+.copy-toast.show {
+  opacity  : 1;
+  transform: translateX(-50%) translateY(0);
+}

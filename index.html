@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f0f0ec" />
+  <title>HUMBE SCRAPER</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Banner ─────────────────────────────────────────────────────────── -->
+  <header class="banner" role="banner">
+    <div class="banner-logo" aria-label="Humbe Scraper">
+      <span class="logo-top">HUMBE</span>
+      <span class="logo-bottom">SCRAPER</span>
+    </div>
+    <p class="banner-sub">Kelas Humabetang · Data Lookup</p>
+  </header>
+
+  <!-- ── Main content ───────────────────────────────────────────────────── -->
+  <main class="wrapper" role="main">
+
+    <!-- Category tabs -->
+    <nav class="tabs" aria-label="Kategori">
+      <button class="tab-btn active" data-cat="student" aria-pressed="true">
+        Siswa
+      </button>
+      <button class="tab-btn" data-cat="teacher" aria-pressed="false">
+        Guru
+      </button>
+    </nav>
+
+    <!-- Search bar -->
+    <div class="search-wrap">
+      <input
+        id="search-input"
+        type="search"
+        placeholder="Ketik nama…"
+        autocomplete="off"
+        autocorrect="off"
+        spellcheck="false"
+        aria-label="Cari nama"
+      />
+      <button id="search-btn" class="btn btn-primary" aria-label="Cari">
+        Cari
+      </button>
+      <button id="clear-btn" class="btn btn-ghost" aria-label="Bersihkan">
+        ✕
+      </button>
+    </div>
+
+    <!-- Status message -->
+    <div id="status-msg" role="status" aria-live="polite"></div>
+
+    <!-- Results -->
+    <section id="results" aria-label="Hasil pencarian"></section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
